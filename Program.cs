@@ -20,7 +20,7 @@ builder.AddAzureOpenAIChatCompletion(
     endpoint: aiSvcEndpoint,
     apiKey: aiSvcKey);
 
-builder.AddAzureComputerVisionImageToText();
+builder.AddAzureComputerVisionImageToText(configuration);
 
 builder.Services.AddTransient<MenuPlugin>();
 

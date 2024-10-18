@@ -2,22 +2,15 @@
 using Azure;
 using Microsoft.SemanticKernel;
 using Microsoft.SemanticKernel.ImageToText;
-using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Options;
+using MyChatAppWithKernel.Configuration;
 
 namespace MyChatAppWithKernel.Services;
 
-public class AzureComputerVisionImageToTextService : IImageToTextService
+public class AzureComputerVisionImageToTextService(IOptions<ImageToTextOptions> options) : IImageToTextService
 {
-    private readonly string _azureServiceEndpoint;
-    private readonly string _azureServiceApiKey;
-
-    public AzureComputerVisionImageToTextService(/*IConfiguration configuration*/)
-    {
-        //_azureServiceEndpoint = configuration["OcrServicesEndpoint"];
-        //_azureServiceApiKey = configuration["OcrServicesKey"];
-        _azureServiceEndpoint = "";
-        _azureServiceApiKey = "";
-    }
+    private readonly string _azureServiceEndpoint = options.Value.ServiceUri;
+    private readonly string _azureServiceApiKey = options.Value.ServiceApiKey;
 
     public IReadOnlyDictionary<string, object?> Attributes => throw new NotImplementedException();
 
