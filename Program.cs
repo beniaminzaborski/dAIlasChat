@@ -1,29 +1,37 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.SemanticKernel;
 using Microsoft.SemanticKernel.ChatCompletion;
 using Microsoft.SemanticKernel.Connectors.OpenAI;
-using MyChatAppWithKernel;
+using MyChatAppWithKernel.Extensions;
+using MyChatAppWithKernel.Plugins;
 using System.Text;
 
 var builder = Kernel.CreateBuilder();
 
+IConfigurationBuilder configBuilder = new ConfigurationBuilder().AddJsonFile("appsettings.json");
+IConfigurationRoot configuration = configBuilder.Build();
+string aiSvcEndpoint = configuration["AIServicesEndpoint"];
+string aiSvcKey = configuration["AIServicesKey"];
+string deploymentName = configuration["DeploymentName"];
+
 builder.AddAzureOpenAIChatCompletion(
-    deploymentName: "gpt-4o",
-    endpoint: "",
-    apiKey: "");
+    deploymentName: deploymentName,
+    endpoint: aiSvcEndpoint,
+    apiKey: aiSvcKey);
+
+builder.AddAzureComputerVisionImageToText();
+
+builder.Services.AddTransient<MenuPlugin>();
 
 //builder.Services.AddLogging(services => services.AddConsole().SetMinimumLevel(LogLevel.Trace));
-
-builder.Services.AddTransient((serviceProvider) =>
-{
-    return new Kernel(serviceProvider);
-});
 
 var kernel = builder.Build();
 
 var chatService = kernel.Services.GetRequiredService<IChatCompletionService>();
 
-kernel.Plugins.AddFromType<MenuPlugin>("Menu");
+//kernel.Plugins.AddFromType<MenuPlugin>("Menu");
+kernel.Plugins.AddFromObject(kernel.Services.GetRequiredService<MenuPlugin>());
 
 // Enable planning
 OpenAIPromptExecutionSettings openAIPromptExecutionSettings = new()
