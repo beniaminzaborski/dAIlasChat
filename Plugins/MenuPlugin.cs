@@ -13,7 +13,7 @@ public class MenuPlugin(IImageToTextService imageToTextService)
     [return: Description("Aktualne menu na dziś")]
     public async Task<IEnumerable<string?>> GetMenuItems()
     {
-        const string lastMenuImageUri = "https://scontent-waw2-1.xx.fbcdn.net/v/t39.30808-6/463750881_511767991729217_8202002394917812110_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=833d8c&_nc_ohc=R6cPwn4hmFYQ7kNvgE_385A&_nc_zt=23&_nc_ht=scontent-waw2-1.xx&_nc_gid=AdeXO19Qgulvdjz6HHO45AQ&oh=00_AYBub_vfjpBZ_C-O0rccIRRDKKeU0Dykalyvyta4LHEXxA&oe=67187E8A";
+        const string lastMenuImageUri = "https://scontent-waw2-2.xx.fbcdn.net/v/t39.30808-6/464250805_514720228100660_8919845461864817507_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=833d8c&_nc_ohc=QXTciiZKhwYQ7kNvgEKraya&_nc_zt=23&_nc_ht=scontent-waw2-2.xx&_nc_gid=AQKyeiJ82R8rxDIXxmI4OpB&oh=00_AYAJxjwuZQWiuXju4oy46e3dfvFiNHIl9qj0NTAMNSnwLg&oe=671DCECB";
 
         var ocrResult = await _imageToTextService.GetTextContentsAsync(
             new ImageContent(new Uri(lastMenuImageUri)));
