@@ -1,7 +1,7 @@
 ﻿using Microsoft.SemanticKernel;
 using Microsoft.SemanticKernel.Connectors.OpenAI;
 
-namespace MyChatAppWithKernel.Helpers;
+namespace Bz.dAIlasChat.Helpers;
 
 public static class OpenAIPromptExecutionSettingsHelper
 {

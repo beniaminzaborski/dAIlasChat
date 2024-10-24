@@ -2,7 +2,7 @@
 using Microsoft.SemanticKernel.ImageToText;
 using System.ComponentModel;
 
-namespace MyChatAppWithKernel.Plugins;
+namespace Bz.dAIlasChat.Plugins;
 
 public class MenuPlugin(IImageToTextService imageToTextService)
 {

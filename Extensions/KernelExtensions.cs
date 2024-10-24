@@ -1,7 +1,7 @@
 ﻿using Microsoft.SemanticKernel;
-using MyChatAppWithKernel.Plugins;
+using Bz.dAIlasChat.Plugins;
 
-namespace MyChatAppWithKernel.Extensions;
+namespace Bz.dAIlasChat.Extensions;
 
 public static class KernelExtensions
 {

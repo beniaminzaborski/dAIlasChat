@@ -3,9 +3,9 @@ using Azure;
 using Microsoft.SemanticKernel;
 using Microsoft.SemanticKernel.ImageToText;
 using Microsoft.Extensions.Options;
-using MyChatAppWithKernel.Configuration;
+using Bz.dAIlasChat.Configuration;
 
-namespace MyChatAppWithKernel.Services;
+namespace Bz.dAIlasChat.Services;
 
 public class AzureComputerVisionImageToTextService(IOptions<ImageToTextOptions> options) : IImageToTextService
 {

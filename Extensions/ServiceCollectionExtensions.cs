@@ -1,13 +1,11 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
 using Microsoft.SemanticKernel;
 using Microsoft.SemanticKernel.ImageToText;
-using MyChatAppWithKernel.Configuration;
-using MyChatAppWithKernel.Plugins;
-using MyChatAppWithKernel.Services;
+using Bz.dAIlasChat.Configuration;
+using Bz.dAIlasChat.Services;
 
-namespace MyChatAppWithKernel.Extensions;
+namespace Bz.dAIlasChat.Extensions;
 
 public static class ServiceCollectionExtensions
 {

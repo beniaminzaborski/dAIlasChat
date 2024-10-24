@@ -1,6 +1,6 @@
 ﻿using Microsoft.SemanticKernel.ChatCompletion;
 
-namespace MyChatAppWithKernel.Helpers;
+namespace Bz.dAIlasChat.Helpers;
 
 public static class ChatHistoryHelper
 {

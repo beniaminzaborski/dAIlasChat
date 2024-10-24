@@ -1,4 +1,4 @@
-﻿namespace MyChatAppWithKernel.Configuration;
+﻿namespace Bz.dAIlasChat.Configuration;
 
 public class ImageToTextOptions
 {

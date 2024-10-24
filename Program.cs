@@ -2,8 +2,8 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.SemanticKernel;
 using Microsoft.SemanticKernel.ChatCompletion;
-using MyChatAppWithKernel.Extensions;
-using MyChatAppWithKernel.Helpers;
+using Bz.dAIlasChat.Extensions;
+using Bz.dAIlasChat.Helpers;
 using System.Text;
 
 var builder = Kernel.CreateBuilder();
