@@ -36,7 +36,7 @@ resource computerVision 'Microsoft.CognitiveServices/accounts@2024-06-01-preview
         type: 'SystemAssigned'
     }
     sku: {
-        name: 'S0'
+        name: 'S1'
     }
     kind: 'ComputerVision'
     properties: {
