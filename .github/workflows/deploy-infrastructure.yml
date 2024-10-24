@@ -1,0 +1,32 @@
+﻿name: Deploy Azure infrastructure from Bicep
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Environment name. Allowed values: dev, qa, stg, prod'
+        required: true
+        default: 'dev'
+
+jobs:
+  deploy-azure-infra:
+    runs-on: ubuntu-latest
+    steps:
+
+      # Checkout code
+    - uses: actions/checkout@v2
+
+      # Log into Azure
+    - uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      # Deploy Bicep file
+    - name: deploy
+      uses: azure/arm-deploy@v1
+      with:
+        subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
+        resourceGroupName: ${{ vars.AZURE_RG }}
+        template: Infrastructure/Azure/main.bicep
+        parameters: 'environment=${{ github.event.inputs.environment }}'
+        failOnStdErr: false

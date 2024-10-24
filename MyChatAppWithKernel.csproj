@@ -19,6 +19,14 @@
     </None>
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include=".github\workflows\deploy-infrastructure.yml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Infrastructure\Azure\modules\" />
+  </ItemGroup>
+
   <PropertyGroup>
     <NoWarn>SKEXP0001,SKEXP0011,</NoWarn>
   </PropertyGroup>
