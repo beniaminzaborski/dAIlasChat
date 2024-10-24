@@ -55,7 +55,7 @@ resource speach 'Microsoft.CognitiveServices/accounts@2024-06-01-preview' = {
         type: 'SystemAssigned'
     }
     sku: {
-        name: 'F0'
+        name: 'S0'
     }
     kind: 'SpeechServices'
     properties: {
