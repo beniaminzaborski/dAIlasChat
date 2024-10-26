@@ -4,6 +4,7 @@ using Microsoft.SemanticKernel;
 using Microsoft.SemanticKernel.ImageToText;
 using Bz.dAIlasChat.Configuration;
 using Bz.dAIlasChat.Services;
+using Microsoft.SemanticKernel.TextToAudio;
 
 namespace Bz.dAIlasChat.Extensions;
 
@@ -28,7 +29,8 @@ public static class ServiceCollectionExtensions
                 deploymentName: azureOpenAIChatOptions.DeploymentName,
                 endpoint: azureOpenAIChatOptions.ServiceUri,
                 apiKey: azureOpenAIChatOptions.ServiceApiKey)
-            .AddTransient<IImageToTextService, AzureComputerVisionImageToTextService>();
+            .AddTransient<IImageToTextService, AzureComputerVisionImageToTextService>()
+            .AddTransient<ITextToAudioService, AzureTextToSpeechService>();
     }
 
     private static IServiceCollection AddOptions(this IServiceCollection services, IConfiguration config)
@@ -37,7 +39,9 @@ public static class ServiceCollectionExtensions
             .Configure<AzureOpenAIChatOptions>(
                 config.GetSection(AzureOpenAIChatOptions.SectionName))
             .Configure<ImageToTextOptions>(
-                config.GetSection(ImageToTextOptions.SectionName));
+                config.GetSection(ImageToTextOptions.SectionName))
+            .Configure<TextToSpeechOptions>(
+                config.GetSection(TextToSpeechOptions.SectionName));
     }
 
     private static IServiceCollection AddSemanticKernelPlugins(this IServiceCollection services)
