@@ -9,5 +9,7 @@ public static class KernelExtensions
     {
         kernel.Plugins
             .AddFromType<MenuPlugin>(serviceProvider: kernel.Services);
+        kernel.Plugins
+            .AddFromType<SpeechOrderPlugin>(serviceProvider: kernel.Services);
     }
 }

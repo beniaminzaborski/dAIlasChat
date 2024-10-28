@@ -15,7 +15,6 @@ public static class ServiceCollectionExtensions
         return services
             .AddOptions(config)
             .AddAiServices(config)
-            .AddSemanticKernelPlugins()
             /*.AddLogging(services => services.AddConsole().SetMinimumLevel(LogLevel.Trace))*/;
     }
 
@@ -42,11 +41,5 @@ public static class ServiceCollectionExtensions
                 config.GetSection(ImageToTextOptions.SectionName))
             .Configure<TextToSpeechOptions>(
                 config.GetSection(TextToSpeechOptions.SectionName));
-    }
-
-    private static IServiceCollection AddSemanticKernelPlugins(this IServiceCollection services)
-    {
-        return services
-            /*.AddTransient<MenuPlugin>()*/;
     }
 }

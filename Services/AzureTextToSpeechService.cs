@@ -18,7 +18,6 @@ public class AzureTextToSpeechService(IOptions<TextToSpeechOptions> options) : I
         Kernel? kernel = null,
         CancellationToken cancellationToken = default)
     {
-        //var speechConfig = SpeechConfig.Fro(new Uri(_options.Value.ServiceUri), _options.Value.ServiceApiKey);
         var speechConfig = SpeechConfig.FromSubscription(_options.Value.ServiceApiKey, _options.Value.SpeechRegion);
         speechConfig.SpeechSynthesisVoiceName = "pl-PL-ZofiaNeural";
         

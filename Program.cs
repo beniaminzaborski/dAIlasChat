@@ -19,7 +19,7 @@ kernel.UseKernelPlugins();
 
 var chatHistory = ChatHistoryHelper.Create();
 var chatService = kernel.Services.GetRequiredService<IChatCompletionService>();
-var openAIPromptExecutionSettings = OpenAIPromptExecutionSettingsHelper.Create();
+var openAiPromptExecutionSettings = OpenAIPromptExecutionSettingsHelper.Create();
 
 string userInput = string.Empty;
 do
@@ -28,19 +28,19 @@ do
 
     ConsoleHelper.PrintAsUser();
     userInput = Console.ReadLine();
-
+    
     chatHistory.AddUserMessage(userInput);
 
     ConsoleHelper.PrintAsAssistant();
 
     var resultContent = new StringBuilder();
-    await foreach (var chunk in chatService.GetStreamingChatMessageContentsAsync(chatHistory, executionSettings: openAIPromptExecutionSettings, kernel: kernel))
+    await foreach (var chunk in chatService.GetStreamingChatMessageContentsAsync(chatHistory, executionSettings: openAiPromptExecutionSettings, kernel: kernel))
     {
         Console.Write(chunk);
 
         resultContent.Append(chunk.Content);
     }
-
+    
     chatHistory.AddMessage(authorRole: AuthorRole.User, content: resultContent.ToString());
 }
 while (userInput.ToLower() != "bye");
